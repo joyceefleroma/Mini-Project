@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>POLYSCAN - 3D Presentation</title>
+
+  <style>
+    html,body { 
+      height:100%; margin:0; 
+      font-family: Arial, sans-serif; 
+      background:#03303b; color:#fff; 
+      display:flex; 
+      justify-content:center; 
+      align-items:center;
+      flex-direction:column;
+    }
+
+    h1 { margin: 12px 0; font-size: 24px; }
+    p { margin: 6px 0 16px 0; color: #ccc; font-size: 14px; }
+
+    /* ===== 3D Viewer Container ===== */
+    .css-3d {
+      position: relative;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      height:620px;
+      width: 620px;
+      perspective: 1000px;
+    }
+    .css-3d .device {
+      width: 420px;
+      max-width: 90%;
+      transform-style: preserve-3d;
+      filter: drop-shadow(0 24px 40px rgba(0,0,0,0.6));
+      cursor: grab;
+      transition: transform 0.1s linear;
+    }
+
+    /* ===== Overlay labels ===== */
+    .label {
+      position: absolute;
+      color: #fff;
+      font-size: 20px;
+      background: rgba(6, 232, 221, 0.4);
+      padding: 4px 8px;
+      border-radius: 8px;
+      pointer-events: none;
+    }
+
+    .label-top    { top: 5px; left: 50%; transform: translateX(-50%); }
+    .label-bottom { bottom: 50px; left: 50%; transform: translateX(-50%); }
+    .label-left   { top: 50%; left: 10px; transform: translateY(-50%); }
+    .label-right  { top: 50%; right: 10px; transform: translateY(-50%); }
+
+    /* ===== Next Page Button ===== */
+    .next-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background: #a4055f;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .next-btn:hover {
+      background: #5f033c;
+    }
+  </style>
+</head>
+<body>
+  <h1>DISPLAY OF 3D MODEL POLY-SCAN DEVICE </h1>
+  <p>360° REPRESENTATION OF MODEL - <code>WORKING MECHANISM</code></p>
+
+  <div class="css-3d">
+    <img class="device" id="device" src="/Users/joyceefleroma/Downloads/ChatGPT Image Aug 31, 2025 at 08_35_32 PM.png" alt="Polyscan Device">
+
+    <!-- Labels -->
+    <div class="label label-top">MOTHER BOARD</div>
+    <div class="label label-bottom">SENSORS</div>
+    <div class="label label-left">LEDs</div>
+    <div class="label label-right">BATTERY</div>
+  </div>
+
+  <!-- Next Page Button -->
+  <button class="next-btn" onclick="goNextPage()">DEVICE-PARTS</button>
+
+  <script>
+    const device = document.getElementById("device");
+    let rotationX = 0, rotationY = 0; 
+    let isDragging = false;
+    let lastX, lastY;
+
+    // Start dragging
+    device.addEventListener("mousedown", startDrag);
+    device.addEventListener("touchstart", startDrag);
+    window.addEventListener("mousemove", drag);
+    window.addEventListener("touchmove", drag);
+    window.addEventListener("mouseup", endDrag);
+    window.addEventListener("touchend", endDrag);
+
+    function startDrag(e) {
+      isDragging = true;
+      device.style.cursor = "grabbing";
+      lastX = e.touches ? e.touches[0].clientX : e.clientX;
+      lastY = e.touches ? e.touches[0].clientY : e.clientY;
+    }
+
+    function drag(e) {
+      if (!isDragging) return;
+      let clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      let clientY = e.touches ? e.touches[0].clientY : e.clientY;
+
+      let deltaX = clientX - lastX;
+      let deltaY = clientY - lastY;
+
+      rotationY += deltaX * 0.5; 
+      rotationX -= deltaY * 0.5; 
+
+      device.style.transform = `rotateX(${rotationX}deg) rotateY(${rotationY}deg)`;
+
+      lastX = clientX;
+      lastY = clientY;
+    }
+
+    function endDrag() {
+      if (!isDragging) return;
+      isDragging = false;
+      device.style.cursor = "grab";
+    }
+
+    // Next Page Redirect
+    function goNextPage() {
+      window.location.href = "deviceparts.html"; 
+    }
+  </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Device Parts</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0a0a0a;
+      color: #fff;
+      text-align: center;
+      padding-top: 100px;
+    }
+
+    /* Back button styling */
+    .back-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      padding: 10px 20px;
+      background-color: #6d0466;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    .back-btn:hover {
+      background-color: #4a5d06;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Back button -->
+  <a href="index.html" class="back-btn">⬅ Back</a>
+  <p><b>Here you can see all the parts of the POLYSCAN device with diagrams and descriptions in Device Parts.</b></p>
+
+</body>
+</html>
+
