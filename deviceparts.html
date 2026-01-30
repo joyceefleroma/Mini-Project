@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>POLYSCAN Features</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f8fbff, #eaf7ff);
+      color: #333;
+      padding: 2rem;
+      padding-bottom: 80px; /* extra space so content doesn't overlap with button */
+    }
+
+    /* Back Button - fixed at bottom center */
+    .back-btn {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: inline-block;
+      padding: 12px 28px;
+      background: #d21e96;
+      color: white;
+      font-weight: bold;
+      font-size: 1rem;
+      text-decoration: none;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+    .back-btn:hover {
+      background: #1c075c;
+      transform: translateX(-50%) scale(1.05);
+    }
+
+    .feature {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      margin-bottom: 3rem;
+      padding: 1.5rem;
+      border-radius: 20px;
+      box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.08);
+      background: #fff;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .feature:hover {
+      transform: translateY(-5px);
+      box-shadow: 0px 12px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .feature:nth-child(even) {
+      flex-direction: row-reverse;
+      background: #f0faff;
+    }
+
+    .img-card {
+      position: relative;
+      width: 350px;
+      min-width: 240px;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .img-card img {
+      width: 100%;
+      display: block;
+      border-radius: 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Decorative shape behind each image */
+    .img-card::before {
+      content: "";
+      position: absolute;
+      top: -25px;
+      left: -25px;
+      width: 120%;
+      height: 120%;
+      background: radial-gradient(circle at top left, #2295b5, transparent 70%);
+      border-radius: 40%;
+      z-index: 1;
+      transform: rotate(25deg);
+    }
+
+    .text {
+      flex: 1;
+    }
+
+    .text h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #004d80;
+      position: relative;
+    }
+
+    .text h3::after {
+      content: "";
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: #00c6ff;
+      border-radius: 2px;
+    }
+
+    .text p {
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Feature 1 -->
+  <div class="feature">
+    <div class="img-card">
+      <img src="/Users/joyceefleroma/Downloads/ChatGPT Image Aug 29, 2025 at 04_04_26 PM.png" alt="Feature 1">
+    </div>
+    <div class="text">
+      <h3>1.SENSING UNIT (to detect plastic in water):</h3>
+      <p><b>Turbidity Sensor (e.g., SEN0189)-</b><br>
+•Detects water cloudiness.<br>
+•If plastic particles are present, turbidity increases.<br>
+•Inexpensive and easy to connect with Arduino/ESP32.<br>
+<b>IR LED + Photodiode Pair-</b><br>
+•Plastic scatters light differently compared to clean water.<br>
+•By shining IR light and measuring the scattered signal, you can simulate “plastic detection.”<br>
+<b>Ultrasonic Sensor-</b><br>
+•Measures sound wave scattering in water.<br>
+•Can help detect foreign particles (basic, not specific to plastic).<br>
+<b>Low-cost Camera + Image Processing (OpenCV)-</b><br>
+•Captures water images and detects unusual shapes/colors.<br>
+•This is closest to your website simulation approach..</p>
+    </div>
+  </div>
+
+  <!-- Feature 2 -->
+  <div class="feature">
+    <div class="img-card">
+      <img src="/Users/joyceefleroma/Downloads/ChatGPT Image Aug 29, 2025 at 04_10_03 PM.png" alt="Feature 2">
+    </div>
+    <div class="text">
+      <h3>2.PROCESSING & CONTROL UNIT:</h3>
+      <p><b>Microcontroller (MCU)-</b><br>
+•Core brain of the system, processes sensor data.<br>
+•Example: Arduino, ESP32, STM32, Raspberry Pi Pico.<br>
+<b>Signal Conditioning Circuit-</b><br>
+•Amplifiers, filters, and ADC (Analog to Digital Converter) to clean and digitize sensor signals.<br>
+<b>Firmware / Algorithms-</b><br>
+•Compares sensor readings to known patterns of plastic contamination.<br>
+•Could use AI/ML models if advanced detection is needed.</p>
+    </div>
+  </div>
+
+  <!-- Feature 3 -->
+  <div class="feature">
+    <div class="img-card">
+      <img src="/Users/joyceefleroma/Downloads/power.jpg" alt="Feature 3">
+    </div>
+    <div class="text">
+      <h3>3.POWER SUPPLY:</h3>
+      <p><b>Rechargeable Battery (Li-ion / Li-Po)-</b><br>
+•Powers the device for portability.<br>
+<b>Voltage Regulator-</b><br>
+•Ensures stable supply to sensitive sensors.<br>
+<b>Charging Module-</b><br>
+•Example: TP4056 for Li-ion charging via USB.</p>
+    </div>
+  </div>
+  <!-- Feature 4 -->
+  <div class="feature">
+    <div class="img-card">
+      <img src="/Users/joyceefleroma/Downloads/display.webp" alt="Feature 4">
+    </div>
+    <div class="text">
+      <h3>4.DATA DISPLAY & COMMUNICATION:</h3>
+      <p><b>On-Device Display-</b><br>
+•LCD or OLED screen to show plastic detection results (ppm, status).<br>
+<b>LED Indicators-</b><br>
+•Simple green (safe), yellow (warning), red (plastic detected) indicators.<br>
+<b>Wireless Communication-</b><br>
+•Bluetooth / WiFi for sending data to a smartphone or cloud for monitoring.<br>
+•Example: ESP32 with built-in WiFi + BLE..</p>
+    </div>
+  </div>
+
+  <!-- Feature 5 -->
+  <div class="feature">
+    <div class="img-card">
+      <img src="/Users/joyceefleroma/Downloads/probe.webp" alt="Feature 5">
+    </div>
+    <div class="text">
+      <h3>5.ENCLOSURE & PROBE:</h3>
+      <p> <b>Waterproof Casing-</b><br> 
+        •Protects electronics, typically IP65/IP67 rated.<br>
+<b>Immersible Probe-</b><br>
+•Contains optical and conductivity sensors that go into the water.<br>
+<b>Cable / Connector-</b><br>
+•Carries sensor signals from probe to main body..</p>
+    </div>
+  </div>
+
+  <!-- Feature 6 -->
+  <div class="feature">
+    <div class="img-card">
+      <img src="/Users/joyceefleroma/Downloads/ChatGPT Image Aug 29, 2025 at 04_28_31 PM.png" alt="Feature 6">
+    </div>
+    <div class="text">
+      <h3>🔹 MINIMUM COMPONENTS FOR A WORKING PROTOTYPE</h3>
+      <p><b>•IR LED + Photodiode (basic plastic scattering detection)</b><br>
+<b>•Turbidity sensor module</b><br>
+<b>•Arduino/ESP32 (microcontroller)</b><br>
+<b>•Rechargeable battery + charging module</b><br>
+<b>•Small OLED display (for result)</b><br>
+<b>•Waterproof casing + probe.</b></p>
+    </div>
+  </div>
+
+  <!-- Back Button -->
+  <a href="viewdevice.html" class="back-btn">← BACK TO DEVICE</a>
+
+</body>
+</html>
